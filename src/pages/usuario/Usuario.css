@@ -1,0 +1,33 @@
+.usuario-container {
+  padding: 2rem 0;
+}
+
+.usuario-card {
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-speed);
+}
+
+.usuario-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.usuario-title {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.usuario-text {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .usuario-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .usuario-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+} 

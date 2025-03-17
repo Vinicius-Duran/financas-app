@@ -1,0 +1,58 @@
+.termos-servico-container {
+  padding: 2rem 0;
+  min-height: calc(100vh - 64px);
+  background-color: var(--background-color);
+}
+
+.termos-card {
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-speed);
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+}
+
+.termos-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.termos-list {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+.termos-list li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.termos-title {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.termos-text {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .termos-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .termos-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .termos-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .termos-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+} 

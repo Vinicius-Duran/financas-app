@@ -1,0 +1,33 @@
+.relatorio-container {
+  padding: 2rem 0;
+}
+
+.relatorio-card {
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-speed);
+}
+
+.relatorio-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.relatorio-title {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+.relatorio-text {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .relatorio-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .relatorio-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+} 
