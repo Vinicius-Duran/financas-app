@@ -1,0 +1,88 @@
+.contas-bancarias-container {
+  padding: 2rem;
+  min-height: calc(100vh - 64px);
+  background-color: var(--background-color);
+}
+
+.contas-bancarias-title {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.contas-bancarias-card {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  transition: all 0.3s ease;
+}
+
+.contas-bancarias-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.contas-bancarias-subtitle {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.contas-bancarias-input {
+  width: 100%;
+}
+
+.contas-bancarias-input .MuiOutlinedInput-root {
+  color: var(--text-color);
+}
+
+.contas-bancarias-input .MuiInputLabel-root {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.contas-bancarias-input .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color);
+}
+
+.contas-bancarias-input:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color);
+}
+
+.contas-bancarias-button {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+/* Dark theme */
+[data-theme="dark"] .contas-bancarias-card {
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+[data-theme="dark"] .contas-bancarias-card:hover {
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+/* Light theme */
+[data-theme="light"] .contas-bancarias-card {
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+[data-theme="light"] .contas-bancarias-card:hover {
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contas-bancarias-container {
+    padding: 1rem;
+  }
+  
+  .contas-bancarias-card {
+    padding: 1.5rem;
+  }
+} 

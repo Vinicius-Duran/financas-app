@@ -1,0 +1,88 @@
+.receita-container {
+  padding: 2rem;
+  min-height: calc(100vh - 64px);
+  background-color: var(--background-color);
+}
+
+.receita-title {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.receita-card {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  transition: all 0.3s ease;
+}
+
+.receita-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.receita-subtitle {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.receita-input {
+  width: 100%;
+}
+
+.receita-input .MuiOutlinedInput-root {
+  color: var(--text-color);
+}
+
+.receita-input .MuiInputLabel-root {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.receita-input .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color);
+}
+
+.receita-input:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-color);
+}
+
+.receita-button {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  text-transform: none;
+}
+
+/* Dark theme */
+[data-theme="dark"] .receita-card {
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+[data-theme="dark"] .receita-card:hover {
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+/* Light theme */
+[data-theme="light"] .receita-card {
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+[data-theme="light"] .receita-card:hover {
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .receita-container {
+    padding: 1rem;
+  }
+  
+  .receita-card {
+    padding: 1.5rem;
+  }
+} 

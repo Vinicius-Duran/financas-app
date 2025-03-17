@@ -1,0 +1,115 @@
+.navbar {
+  background: var(--background-gradient) !important;
+  box-shadow: var(--shadow-sm) !important;
+  z-index: 1200 !important;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  margin-right: var(--spacing-md);
+  transition: opacity var(--transition-speed);
+  position: relative;
+}
+
+.navbar-link:hover {
+  opacity: 0.8;
+}
+
+.navbar-link.active {
+  border-bottom: 2px solid white;
+}
+
+.navbar-title {
+  font-weight: bold !important;
+  color: white !important;
+}
+
+.navbar-links {
+  flex-grow: 1;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.theme-switch-input {
+  color: white !important;
+}
+
+.theme-switch-input .MuiSwitch-thumb {
+  background-color: white;
+}
+
+.theme-switch-input .MuiSwitch-track {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-icon {
+  color: white !important;
+}
+
+.navbar-icon:hover {
+  opacity: 0.8;
+}
+
+.navbar-menu {
+  margin-top: var(--spacing-sm);
+}
+
+.navbar-menu-item {
+  color: var(--text-primary) !important;
+  transition: background-color var(--transition-speed);
+}
+
+.navbar-menu-item:hover {
+  background-color: var(--hover-color);
+}
+
+.navbar-menu-item.active {
+  background-color: var(--hover-color);
+  color: var(--primary-color) !important;
+}
+
+/* Estilos para o menu mobile */
+@media (max-width: 600px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-actions {
+    margin-left: auto;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-menu .MuiPaper-root {
+  animation: fadeIn var(--transition-speed) ease-out;
+} 

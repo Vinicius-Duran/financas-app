@@ -20,6 +20,7 @@ import {
   LightMode,
   DarkMode,
 } from '@mui/icons-material';
+import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
@@ -38,7 +39,6 @@ const Navbar = () => {
 
   const handleThemeChange = () => {
     setDarkMode(!darkMode);
-    // Aqui você pode adicionar a lógica para mudar o tema global
     document.documentElement.setAttribute('data-theme', !darkMode ? 'dark' : 'light');
   };
 
@@ -50,22 +50,20 @@ const Navbar = () => {
   ];
 
   return (
-    <AppBar position="fixed" sx={{ background: 'var(--background-gradient)' }}>
+    <AppBar position="fixed" className="navbar">
       <Toolbar>
-        <Link to="/" style={{ textDecoration: 'none', color: 'white', marginRight: '20px' }}>
-          <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+        <Link to="/" className="navbar-link">
+          <Typography variant="h6" component="div" className="navbar-title">
             Finanças App
           </Typography>
         </Link>
 
-        <Box sx={{ flexGrow: 1, display: 'flex', gap: 2 }}>
+        <Box className="navbar-links">
           <Button
             color="inherit"
             component={Link}
             to="/"
-            sx={{
-              borderBottom: location.pathname === '/' ? '2px solid white' : 'none',
-            }}
+            className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
           >
             Home
           </Button>
@@ -74,9 +72,7 @@ const Navbar = () => {
             color="inherit"
             endIcon={<KeyboardArrowDown />}
             onClick={handleMenu}
-            sx={{
-              borderBottom: location.pathname.startsWith('/cadastros') ? '2px solid white' : 'none',
-            }}
+            className={`navbar-link ${location.pathname.startsWith('/cadastros') ? 'active' : ''}`}
           >
             Cadastros
           </Button>
@@ -84,6 +80,7 @@ const Navbar = () => {
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleClose}
+            className="navbar-menu"
           >
             {cadastrosItems.map((item) => (
               <MenuItem
@@ -91,6 +88,7 @@ const Navbar = () => {
                 component={Link}
                 to={item.path}
                 onClick={handleClose}
+                className={`navbar-menu-item ${location.pathname === item.path ? 'active' : ''}`}
               >
                 {item.name}
               </MenuItem>
@@ -101,9 +99,7 @@ const Navbar = () => {
             color="inherit"
             component={Link}
             to="/lancamento"
-            sx={{
-              borderBottom: location.pathname === '/lancamento' ? '2px solid white' : 'none',
-            }}
+            className={`navbar-link ${location.pathname === '/lancamento' ? 'active' : ''}`}
           >
             Lançamento
           </Button>
@@ -112,16 +108,14 @@ const Navbar = () => {
             color="inherit"
             component={Link}
             to="/relatorio"
-            sx={{
-              borderBottom: location.pathname === '/relatorio' ? '2px solid white' : 'none',
-            }}
+            className={`navbar-link ${location.pathname === '/relatorio' ? 'active' : ''}`}
           >
             Relatório
           </Button>
         </Box>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+        <Box className="navbar-actions">
+          <Box className="theme-switch">
             <IconButton color="inherit" size="small">
               {darkMode ? <DarkMode /> : <LightMode />}
             </IconButton>
@@ -130,24 +124,18 @@ const Navbar = () => {
               onChange={handleThemeChange}
               color="default"
               size="small"
-              sx={{
-                '& .MuiSwitch-thumb': {
-                  backgroundColor: 'white',
-                },
-                '& .MuiSwitch-track': {
-                  backgroundColor: 'rgba(255,255,255,0.3)',
-                },
-              }}
+              className="theme-switch-input"
             />
           </Box>
           <IconButton
             color="inherit"
             component={Link}
             to="/usuario"
+            className="navbar-icon"
           >
             <AccountCircle />
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" className="navbar-icon">
             <Logout />
           </IconButton>
         </Box>
