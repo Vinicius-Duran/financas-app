@@ -11,9 +11,9 @@
   padding: var(--spacing-xl);
   margin-top: var(--navbar-height);
   background-color: var(--background-color);
-  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: var(--navbar-height) auto 0;
 }
 

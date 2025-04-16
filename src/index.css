@@ -121,7 +121,6 @@ button:focus-visible {
 input, textarea, select {
   font: inherit;
 }
-
 /* Estilos para cards e containers */
 .card {
   background-color: var(--card-background);
@@ -206,3 +205,4 @@ tr:hover {
     background-color: #f9f9f9;
   }
 }
+

@@ -1,5 +1,9 @@
 .lancamento-container {
-  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-xl);
 }
 
 .lancamento-card {
@@ -14,8 +18,10 @@
 }
 
 .lancamento-title {
-  color: var(--text-color);
-  margin-bottom: 2rem;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
 }
 
 .lancamento-text {
@@ -30,4 +36,74 @@
 [data-theme="light"] .lancamento-card {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
+}
+
+.lancamento-form {
+  background: var(--card-background);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.form-control::placeholder {
+  color: #999;
+}
+
+.submit-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  width: 100%;
+}
+
+.submit-button:hover {
+  background: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+  .lancamento-container {
+    padding: var(--spacing-md);
+  }
+
+  .lancamento-title {
+    font-size: 2rem;
+  }
+
+  .lancamento-form {
+    padding: var(--spacing-lg);
+  }
 } 

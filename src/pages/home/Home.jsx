@@ -1,29 +1,29 @@
 import React from 'react';
-import { Typography, Box, Paper } from '@mui/material';
 import './Home.css';
 
 const Home = () => {
   return (
-    <Box className="home-container">
-      <Typography variant="h4" component="h1" className="home-title">
-        Bem-vindo ao CashFlow
-      </Typography>
-      
-      <Paper className="home-card">
-        <Typography variant="h6" gutterBottom className="home-text">
-          Dashboard
-        </Typography>
-        <Typography paragraph className="home-text">
-          Aqui você pode visualizar um resumo das suas finanças, incluindo:
-        </Typography>
-        <ul className="home-text">
-          <li>Saldo atual</li>
-          <li>Receitas do mês</li>
-          <li>Despesas do mês</li>
-          <li>Gastos por categoria</li>
-        </ul>
-      </Paper>
-    </Box>
+    <div className="home-container">
+      <h1 className="home-title">Bem-vindo ao Sistema de Gestão Financeira</h1>
+      <p className="home-description">
+        Gerencie suas finanças de forma eficiente e organizada. 
+        Acompanhe seus gastos, receitas e mantenha suas contas em dia.
+      </p>
+      <div className="home-features">
+        <div className="feature-card">
+          <h2>Cadastros</h2>
+          <p>Gerencie seus centros de custo, contas bancárias e plano de contas.</p>
+        </div>
+        <div className="feature-card">
+          <h2>Lançamentos</h2>
+          <p>Registre suas receitas e despesas de forma simples e rápida.</p>
+        </div>
+        <div className="feature-card">
+          <h2>Relatórios</h2>
+          <p>Visualize relatórios detalhados da sua situação financeira.</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

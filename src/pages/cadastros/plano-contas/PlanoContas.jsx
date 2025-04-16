@@ -1,85 +1,65 @@
 import React from 'react';
-import { Typography, Box, Paper, TextField, Button, Grid, MenuItem } from '@mui/material';
 import './PlanoContas.css';
 
 const PlanoContas = () => {
   return (
-    <Box className="plano-contas-container">
-      <Typography variant="h4" component="h1" className="plano-contas-title">
-        Cadastro de Plano de Contas
-      </Typography>
-      
-      <Paper className="plano-contas-card">
-        <Typography variant="h6" gutterBottom className="plano-contas-subtitle">
-          Nova Conta
-        </Typography>
-        
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Código"
-              variant="outlined"
+    <div className="plano-contas-container">
+      <h1 className="plano-contas-title">Cadastro de Plano de Contas</h1>
+
+      <div className="plano-contas-card">
+        <h2 className="plano-contas-subtitle">Nova Conta</h2>
+
+        <form className="plano-contas-form">
+          <div className="form-row">
+            <input
+              type="text"
+              placeholder="Código"
               className="plano-contas-input"
             />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Nome da Conta"
-              variant="outlined"
+          </div>
+
+          <div className="form-row">
+            <input
+              type="text"
+              placeholder="Nome da Conta"
               className="plano-contas-input"
             />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Tipo"
-              select
-              variant="outlined"
+          </div>
+
+          <div className="form-row">
+            <select className="plano-contas-input">
+              <option value="">Tipo</option>
+              <option value="receita">Receita</option>
+              <option value="despesa">Despesa</option>
+              <option value="patrimonio">Patrimônio</option>
+            </select>
+          </div>
+
+          <div className="form-row">
+            <select className="plano-contas-input">
+              <option value="">Conta Pai</option>
+              <option value="1">Receitas</option>
+              <option value="2">Despesas</option>
+            </select>
+          </div>
+
+          <div className="form-row">
+            <textarea
+              placeholder="Descrição"
+              rows="4"
               className="plano-contas-input"
-            >
-              <MenuItem value="receita">Receita</MenuItem>
-              <MenuItem value="despesa">Despesa</MenuItem>
-              <MenuItem value="patrimonio">Patrimônio</MenuItem>
-            </TextField>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              fullWidth
-              label="Conta Pai"
-              select
-              variant="outlined"
-              className="plano-contas-input"
-            >
-              <MenuItem value="">Nenhuma</MenuItem>
-              <MenuItem value="1">Receitas</MenuItem>
-              <MenuItem value="2">Despesas</MenuItem>
-            </TextField>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="Descrição"
-              multiline
-              rows={4}
-              variant="outlined"
-              className="plano-contas-input"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              className="plano-contas-button"
-            >
+            ></textarea>
+          </div>
+
+          <div className="form-row">
+            <button type="submit" className="plano-contas-button">
               Salvar
-            </Button>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Box>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default PlanoContas; 
+export default PlanoContas;

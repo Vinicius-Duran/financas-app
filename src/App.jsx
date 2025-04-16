@@ -22,6 +22,8 @@ import PoliticaPrivacidade from './pages/politica-privacidade/PoliticaPrivacidad
 import TermosServico from './pages/termos-servico/TermosServico';
 import Contato from './pages/contato/Contato';
 
+import Usuario from './pages/usuario/Usuario';
+
 // Theme configuration
 const theme = createTheme({
   palette: {
@@ -52,6 +54,7 @@ function App() {
             <Route path="politica-privacidade" element={<PoliticaPrivacidade />} />
             <Route path="termos-servico" element={<TermosServico />} />
             <Route path="contato" element={<Contato />} />
+            <Route path="usuario" element={<Usuario />} />
           </Route>
         </Routes>
       </Router>

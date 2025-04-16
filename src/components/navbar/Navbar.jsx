@@ -1,46 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Menu,
-  MenuItem,
-  Box,
-  IconButton,
-  Switch,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
-import {
-  AccountCircle,
-  Logout,
-  KeyboardArrowDown,
-  LightMode,
-  DarkMode,
-} from '@mui/icons-material';
 import './Navbar.css';
 
 const Navbar = () => {
-  const location = useLocation();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
+  const dropdownRef = useRef(null);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleThemeChange = () => {
     setDarkMode(!darkMode);
     document.documentElement.setAttribute('data-theme', !darkMode ? 'dark' : 'light');
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const cadastrosItems = [
     { name: 'Centro de Custos', path: '/cadastros/centro-custos' },
@@ -50,97 +38,66 @@ const Navbar = () => {
   ];
 
   return (
-    <AppBar position="fixed" className="navbar">
-      <Toolbar>
+    <nav className="navbar">
+      <div className="navbar-brand">
         <Link to="/" className="navbar-link">
-          <Typography variant="h6" component="div" className="navbar-title">
-            Finanças App
-          </Typography>
+          <span className="navbar-title">Finanças App</span>
+        </Link>
+      </div>
+
+      <div className="navbar-links">
+        <Link to="/" className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}>
+          Home
         </Link>
 
-        <Box className="navbar-links">
-          <Button
-            color="inherit"
-            component={Link}
-            to="/"
-            className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
-          >
-            Home
-          </Button>
-
-          <Button
-            color="inherit"
-            endIcon={<KeyboardArrowDown />}
-            onClick={handleMenu}
+        <div ref={dropdownRef} className="navbar-dropdown-container">
+          <button
             className={`navbar-link ${location.pathname.startsWith('/cadastros') ? 'active' : ''}`}
+            onClick={handleDropdownToggle}
           >
             Cadastros
-          </Button>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-            className="navbar-menu"
-          >
-            {cadastrosItems.map((item) => (
-              <MenuItem
-                key={item.path}
-                component={Link}
-                to={item.path}
-                onClick={handleClose}
-                className={`navbar-menu-item ${location.pathname === item.path ? 'active' : ''}`}
-              >
-                {item.name}
-              </MenuItem>
-            ))}
-          </Menu>
+            <span className="dropdown-arrow"></span>
+          </button>
 
-          <Button
-            color="inherit"
-            component={Link}
-            to="/lancamento"
-            className={`navbar-link ${location.pathname === '/lancamento' ? 'active' : ''}`}
-          >
-            Lançamento
-          </Button>
+          {isDropdownOpen && (
+            <div className="navbar-menu">
+              {cadastrosItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsDropdownOpen(false)}
+                  className={`navbar-menu-item ${location.pathname === item.path ? 'active' : ''}`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
-          <Button
-            color="inherit"
-            component={Link}
-            to="/relatorio"
-            className={`navbar-link ${location.pathname === '/relatorio' ? 'active' : ''}`}
-          >
-            Relatório
-          </Button>
-        </Box>
+        <Link to="/lancamento" className={`navbar-link ${location.pathname === '/lancamento' ? 'active' : ''}`}>
+          Lançamento
+        </Link>
 
-        <Box className="navbar-actions">
-          <Box className="theme-switch">
-            <IconButton color="inherit" size="small">
-              {darkMode ? <DarkMode /> : <LightMode />}
-            </IconButton>
-            <Switch
-              checked={darkMode}
-              onChange={handleThemeChange}
-              color="default"
-              size="small"
-              className="theme-switch-input"
-            />
-          </Box>
-          <IconButton
-            color="inherit"
-            component={Link}
-            to="/usuario"
-            className="navbar-icon"
-          >
-            <AccountCircle />
-          </IconButton>
-          <IconButton color="inherit" className="navbar-icon">
-            <Logout />
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+        <Link to="/relatorio" className={`navbar-link ${location.pathname === '/relatorio' ? 'active' : ''}`}>
+          Relatório
+        </Link>
+      </div>
+
+      <div className="navbar-actions">
+        <div className="theme-switch">
+          <button className="theme-switch-input" onClick={handleThemeChange}>
+            {darkMode ? 'Modo Claro' : 'Modo Escuro'}
+          </button>
+        </div>
+        <Link to="/usuario" className="navbar-icon">
+          <span className="icon-text">Usuário</span>
+        </Link>
+        <button className="navbar-icon">
+          <span className="icon-text">Sair</span>
+        </button>
+      </div>
+    </nav>
   );
 };
 

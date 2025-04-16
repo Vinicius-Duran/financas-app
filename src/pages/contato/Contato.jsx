@@ -1,14 +1,4 @@
 import React, { useState } from 'react';
-import {
-  Typography,
-  Box,
-  Paper,
-  TextField,
-  Button,
-  Grid,
-  Snackbar,
-  Alert,
-} from '@mui/material';
 import './Contato.css';
 
 const Contato = () => {
@@ -18,7 +8,7 @@ const Contato = () => {
     assunto: '',
     mensagem: '',
   });
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [mensagemEnviada, setMensagemEnviada] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +20,9 @@ const Contato = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você implementaria a lógica para enviar o formulário
-    setOpenSnackbar(true);
+    setMensagemEnviada(true);
+    setTimeout(() => setMensagemEnviada(false), 5000);
+
     setFormData({
       nome: '',
       email: '',
@@ -40,171 +31,74 @@ const Contato = () => {
     });
   };
 
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  };
-
   return (
-    <Box className="contato-container">
-      <Typography variant="h4" component="h1" className="contato-title">
-        Contato
-      </Typography>
+    <div className="contato-container">
+      <h1 className="contato-title">Fale Conosco</h1>
 
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
-          <Paper className="contato-info-card">
-            <Typography variant="h6" gutterBottom className="contato-text">
-              Informações de Contato
-            </Typography>
-            <Typography paragraph className="contato-text">
-              Estamos aqui para ajudar! Entre em contato conosco através dos canais abaixo:
-            </Typography>
-            <Box className="contato-info">
-              <Typography variant="body1" gutterBottom className="contato-text">
-                <strong>Email:</strong> contato@cashflow.com
-              </Typography>
-              <Typography variant="body1" gutterBottom className="contato-text">
-                <strong>Telefone:</strong> (11) 1234-5678
-              </Typography>
-              <Typography variant="body1" gutterBottom className="contato-text">
-                <strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo, SP
-              </Typography>
-              <Typography variant="body1" gutterBottom className="contato-text">
-                <strong>Horário de Atendimento:</strong> Segunda a Sexta, 9h às 18h
-              </Typography>
-            </Box>
-          </Paper>
-        </Grid>
+      <div className="contato-grid">
+        <div className="contato-info-card">
+          <h2 className="contato-text">Informações de Contato</h2>
+          <p className="contato-text">
+            Estamos aqui para ajudar! Entre em contato conosco pelos canais abaixo:
+          </p>
+          <div className="contato-info">
+            <p className="contato-text"><strong>Email:</strong> contato@cashflow.com</p>
+            <p className="contato-text"><strong>Telefone:</strong> (11) 1234-5678</p>
+            <p className="contato-text"><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo, SP</p>
+            <p className="contato-text"><strong>Atendimento:</strong> Segunda a Sexta, das 9h às 18h</p>
+          </div>
+        </div>
 
-        <Grid item xs={12} md={6}>
-          <Paper className="contato-form-card">
-            <Typography variant="h6" gutterBottom className="contato-text">
-              Envie sua Mensagem
-            </Typography>
-            <form onSubmit={handleSubmit} className="contato-form">
-              <TextField
-                fullWidth
-                label="Nome"
-                name="nome"
-                value={formData.nome}
-                onChange={handleChange}
-                margin="normal"
-                required
-                className="contato-input"
-                sx={{
-                  '& .MuiInputLabel-root': {
-                    color: 'var(--text-color)',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    color: 'var(--text-color)',
-                    '& fieldset': {
-                      borderColor: 'var(--border-color)',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: 'var(--primary-color)',
-                    },
-                  },
-                }}
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                margin="normal"
-                required
-                className="contato-input"
-                sx={{
-                  '& .MuiInputLabel-root': {
-                    color: 'var(--text-color)',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    color: 'var(--text-color)',
-                    '& fieldset': {
-                      borderColor: 'var(--border-color)',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: 'var(--primary-color)',
-                    },
-                  },
-                }}
-              />
-              <TextField
-                fullWidth
-                label="Assunto"
-                name="assunto"
-                value={formData.assunto}
-                onChange={handleChange}
-                margin="normal"
-                required
-                className="contato-input"
-                sx={{
-                  '& .MuiInputLabel-root': {
-                    color: 'var(--text-color)',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    color: 'var(--text-color)',
-                    '& fieldset': {
-                      borderColor: 'var(--border-color)',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: 'var(--primary-color)',
-                    },
-                  },
-                }}
-              />
-              <TextField
-                fullWidth
-                label="Mensagem"
-                name="mensagem"
-                multiline
-                rows={4}
-                value={formData.mensagem}
-                onChange={handleChange}
-                margin="normal"
-                required
-                className="contato-input"
-                sx={{
-                  '& .MuiInputLabel-root': {
-                    color: 'var(--text-color)',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    color: 'var(--text-color)',
-                    '& fieldset': {
-                      borderColor: 'var(--border-color)',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: 'var(--primary-color)',
-                    },
-                  },
-                }}
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className="contato-submit-button"
-              >
-                Enviar Mensagem
-              </Button>
-            </form>
-          </Paper>
-        </Grid>
-      </Grid>
-
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-      >
-        <Alert onClose={handleCloseSnackbar} severity="success">
-          Mensagem enviada com sucesso! Entraremos em contato em breve.
-        </Alert>
-      </Snackbar>
-    </Box>
+        <div className="contato-form-card">
+          <h2 className="contato-text">Envie sua Mensagem</h2>
+          <form className="contato-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome"
+              value={formData.nome}
+              onChange={handleChange}
+              required
+              className="contato-input"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="contato-input"
+            />
+            <input
+              type="text"
+              name="assunto"
+              placeholder="Assunto"
+              value={formData.assunto}
+              onChange={handleChange}
+              required
+              className="contato-input"
+            />
+            <textarea
+              name="mensagem"
+              placeholder="Mensagem"
+              value={formData.mensagem}
+              onChange={handleChange}
+              rows="4"
+              required
+              className="contato-input"
+            ></textarea>
+            <button type="submit" className="contato-submit-button">Enviar Mensagem</button>
+          </form>
+          {mensagemEnviada && (
+            <div className="contato-alert sucesso">
+              Mensagem enviada com sucesso! Entraremos em contato em breve.
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Contato; 
+export default Contato;

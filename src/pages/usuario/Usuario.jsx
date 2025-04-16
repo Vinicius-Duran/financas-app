@@ -1,24 +1,19 @@
 import React from 'react';
-import { Typography, Box, Paper } from '@mui/material';
 import './Usuario.css';
 
 const Usuario = () => {
   return (
-    <Box className="usuario-container">
-      <Typography variant="h4" component="h1" className="usuario-title">
-        Perfil do Usuário
-      </Typography>
+    <div className="usuario-container">
+      <h1 className="usuario-title">Perfil do Usuário</h1>
       
-      <Paper className="usuario-card">
-        <Typography variant="h6" gutterBottom className="usuario-text">
-          Informações Pessoais
-        </Typography>
-        <Typography paragraph className="usuario-text">
+      <div className="usuario-card">
+        <h2 className="usuario-text">Informações Pessoais</h2>
+        <p className="usuario-text">
           Aqui você pode gerenciar suas informações pessoais e preferências do sistema.
-        </Typography>
-      </Paper>
-    </Box>
+        </p>
+      </div>
+    </div>
   );
 };
 
-export default Usuario; 
+export default Usuario;

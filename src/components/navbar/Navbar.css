@@ -2,6 +2,19 @@
   background: var(--background-gradient) !important;
   box-shadow: var(--shadow-sm) !important;
   z-index: 1200 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-link {
@@ -10,6 +23,11 @@
   margin-right: var(--spacing-md);
   transition: opacity var(--transition-speed);
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-link:hover {
@@ -23,6 +41,7 @@
 .navbar-title {
   font-weight: bold !important;
   color: white !important;
+  font-size: 1.25rem;
 }
 
 .navbar-links {
@@ -30,6 +49,7 @@
   display: flex;
   gap: var(--spacing-sm);
   align-items: center;
+  margin-left: 1rem;
 }
 
 .navbar-actions {
@@ -46,31 +66,62 @@
 
 .theme-switch-input {
   color: white !important;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s;
 }
 
-.theme-switch-input .MuiSwitch-thumb {
-  background-color: white;
-}
-
-.theme-switch-input .MuiSwitch-track {
-  background-color: rgba(255, 255, 255, 0.3);
+.theme-switch-input:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-icon {
   color: white !important;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
 }
 
 .navbar-icon:hover {
   opacity: 0.8;
 }
 
+.navbar-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
 .navbar-menu {
-  margin-top: var(--spacing-sm);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: var(--shadow-medium);
+  padding: 0.5rem 0;
+  min-width: 200px;
+  z-index: 1000;
+  animation: fadeIn var(--transition-speed) ease-out;
+  margin-top: 0.5rem;
 }
 
 .navbar-menu-item {
   color: var(--text-primary) !important;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  display: block;
   transition: background-color var(--transition-speed);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .navbar-menu-item:hover {
@@ -82,7 +133,27 @@
   color: var(--primary-color) !important;
 }
 
-/* Estilos para o menu mobile */
+.dropdown-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5rem;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 600px) {
   .navbar-links {
     display: none;
@@ -96,20 +167,4 @@
     width: 100%;
     max-width: 300px;
   }
-}
-
-/* Animações */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.navbar-menu .MuiPaper-root {
-  animation: fadeIn var(--transition-speed) ease-out;
 } 

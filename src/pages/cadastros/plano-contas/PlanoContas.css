@@ -30,24 +30,34 @@
   font-weight: 500;
 }
 
-.plano-contas-input {
+.plano-contas-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
   width: 100%;
 }
 
-.plano-contas-input .MuiOutlinedInput-root {
+.plano-contas-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
   color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
 }
 
-.plano-contas-input .MuiInputLabel-root {
+.plano-contas-input::placeholder {
   color: var(--text-color);
   opacity: 0.7;
 }
 
-.plano-contas-input .MuiOutlinedInput-notchedOutline {
-  border-color: var(--border-color);
-}
-
-.plano-contas-input:hover .MuiOutlinedInput-notchedOutline {
+.plano-contas-input:focus {
+  outline: none;
   border-color: var(--primary-color);
 }
 
@@ -55,7 +65,17 @@
   margin-top: 1rem;
   padding: 0.75rem 2rem;
   font-weight: 500;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   text-transform: none;
+  transition: background-color 0.3s;
+}
+
+.plano-contas-button:hover {
+  background-color: var(--primary-color-dark);
 }
 
 /* Dark theme */
@@ -81,8 +101,8 @@
   .plano-contas-container {
     padding: 1rem;
   }
-  
+
   .plano-contas-card {
     padding: 1.5rem;
   }
-} 
+}
